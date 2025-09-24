@@ -1,0 +1,22 @@
+		if cnt\20=0 {
+			tempy=playerY-200
+			if playerY-200<30 {
+				tempy=30
+			}
+			tempx=playerX
+		}
+		if cnt\10=0 {
+			NewBulletColor cnt_t
+			cnt_t++
+			if cnt_t>9 {
+				cnt_t=0
+			}
+			cnt_tt=cnt
+			repeat 3
+				CurrentNewBulletClass 0
+				NewBulletSet tempx,tempy,5,cnt_tt*4+cnt*120,20
+			loop
+		}
+		NewBulletSpeedAdd -0.05
+		NewBulletClassChange 0,100,1
+		NewBulletDegChangeClass 10,0

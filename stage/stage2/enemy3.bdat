@@ -1,0 +1,147 @@
+CurrentRam 0
+= 0
+repeat 8 1
+{
+	EnemyTypeSet 1
+	EnemyCurrentClass 0
+	CurrentNewBulletClass 0
+	EnemySet customrnd(200,100) -20 2 90 100 30
+	CurrentRam 0
+	+++ 10
+	repeat 5 1
+	{
+		NewBulletColor 2
+		NewBulletShape 3
+		CurrentRam 2
+		= rnd(4)
+		--- 2
+		repeat 4 1
+		{
+			CurrentRam 2
+			+++ 90
+			@Enemy[NewBulletSet] 0 0 3 rnd(360) 15 1
+		}
+		repeat 5 1
+		{
+			EnemySpeedAddClass 0 -0.01
+			EnemyClassChange 0 0 1 50
+			EnemyClassChange 0 1 2 100
+			EnemySpeedAddClass 2 0.1
+			[ScriptBreak]
+		}
+	}
+}
+repeat 8 1
+{
+	repeat 5 1
+	{
+		NewBulletColor 2
+		NewBulletShape 1
+		CurrentRam 2
+		= rnd(4)
+		--- 2
+		repeat 4 1
+		{
+			CurrentRam 2
+			+++ 90
+			@Enemy[NewBulletSetPAim] 0 0 3 [ProgramRam(2)] 15 1
+		}
+		repeat 5 1
+		{
+			EnemySpeedAddClass 0 -0.01
+			EnemyClassChange 0 0 1 50
+			EnemyClassChange 0 1 2 100
+			EnemySpeedAddClass 2 0.1
+			[ScriptBreak]
+		}
+	}
+}
+
+CurrentRam 0
+= 0
+repeat 8 1
+{
+	EnemyTypeSet 0
+	EnemyCurrentClass 0
+	CurrentNewBulletClass 0
+	EnemySet customrnd(200,100) -20 2 90 100 30
+	CurrentRam 0
+	+++ 10
+	repeat 5 1
+	{
+		NewBulletColor 4
+		NewBulletShape 3
+		CurrentRam 2
+		= rnd(4)
+		--- 2
+		repeat 4 1
+		{
+			CurrentRam 2
+			+++ 90
+			@Enemy[NewBulletSet] 0 0 3 rnd(360) 15 1
+		}
+		repeat 5 1
+		{
+			EnemySpeedAddClass 0 -0.01
+			EnemyClassChange 0 0 1 50
+			EnemyClassChange 0 1 2 100
+			EnemySpeedAddClass 2 0.1
+			[ScriptBreak]
+		}
+	}
+}
+repeat 8 1
+{
+	repeat 5 1
+	{
+		NewBulletColor 4
+		NewBulletShape 1
+		CurrentRam 2
+		= rnd(4)
+		--- 2
+		repeat 4 1
+		{
+			CurrentRam 2
+			+++ 90
+			@Enemy[NewBulletSetPAim] 0 0 3 [ProgramRam(2)] 15 1
+		}
+		repeat 5 1
+		{
+			EnemySpeedAddClass 0 -0.01
+			EnemyClassChange 0 0 1 50
+			EnemyClassChange 0 1 2 100
+			EnemySpeedAddClass 2 0.1
+			[ScriptBreak]
+		}
+	}
+}
+
+CurrentRam 0
+= 0
+EnemyCurrentClass 0
+repeat 40 1
+{
+	repeat 3 1
+	{
+		EnemySet customrnd(200,100) customrnd(50,50) 0 -90 30 30
+	}
+	CurrentRam 0
+	= rnd(20)
+	--- 40
+	repeat 6 1
+	{
+		NewBulletColor 5
+		NewBulletShape 0
+		@Enemy[NewBulletSet] 0 0 3 [ProgramRam(0)] 15 0
+		+++ 60
+	}
+	EnemySpeedAddClass 0 0.5
+	repeat 45 1
+	{
+		[ScriptBreak]
+	}
+}
+repeat 400 1
+{
+	[ScriptBreak]
+}

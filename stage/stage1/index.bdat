@@ -1,0 +1,43 @@
+BackScreenLoad stage/stage1/stage1.png 1
+BackScreenMoveSet 1 0 0
+CurrentBackScreenNumber 1
+
+..goto *BOSS-MID-Stage1
+..goto *Marisa-Stage1Boss
+
+CurrentRam 0
+vAudioLoad stage/stage1/stage1.wav
+vAudioSetRepeat [ProgramRam(0)] 1
+vAudioPlay [ProgramRam(0)]
+
+repeat 100 1
+{
+	[ScriptBreak]
+}
+
+#include stage/stage1/enemy3.bdat
+#include stage/stage1/stage1logo.bdat
+
+#include stage/stage1/enemy1.bdat
+#include stage/stage1/enemy2.bdat
+
+#include stage/stage1/enemy3.bdat
+
+#include stage/stage1/enemy4.bdat
+#include stage/stage1/enemy4.bdat
+
+*BOSS-MID-Stage1
+#include stage/stage1/midboss1.bdat
+
+#include stage/stage1/enemy5.bdat
+
+*Marisa-Stage1Boss
+vAudioStopAll
+vAudioReleaseAll
+CurrentRam 0
+vAudioLoad stage/stage1/stage1boss.mp3
+vAudioSetRepeat [ProgramRam(0)] 1
+vAudioPlay [ProgramRam(0)]
+#include stage/stage1/boss1.bdat
+
+StageNumberChange 2

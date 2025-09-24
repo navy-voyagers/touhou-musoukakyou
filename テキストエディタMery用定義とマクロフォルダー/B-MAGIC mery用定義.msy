@@ -1,0 +1,80 @@
+﻿#TagBegin=
+#TagEnd=
+#CommentBegin1=
+#CommentEnd1=
+#LineComment1=
+#CommentBegin2=
+#CommentEnd2=
+#LineComment2=
+#SpecialSyntax=None
+#ScriptBegin=
+#ScriptEnd=
+#QuoteSingle=False
+#QuoteDouble=False
+#QuoteContinue=True
+#EscapeCharacter=
+
+#Word Color=0, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+NewBulletSet
+BewBulletReset
+
+#Word Color=5, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+@Enemy
+@Boss
+
+#Word Color=0, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+NewBulletShape
+
+#Word Color=2, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+CurrentRam
+rnd
+ProgramRam
+
+#Word Color=0, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+EnemyCurrentClass
+EnemySet
+NewBulletColor
+{
+}
+
+#Word Color=7, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+repeat
+if
+
+#Word Color=5, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+[
+]
+
+#Word Color=7, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+[ScriptBreak]
+
+#Word Color=0, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+EnemySpeedAddClass
+EnemyClassChange
+NewBulletClassChange
+NewBulletDegChangeClass
+EnemyDegAimPlayerClass
+CurrentNewBulletClass
+
+#Word Color=5, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+^#include
+^#addition
+^#const
+^#var
+
+#Word Color=0, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+vAudioStopAll
+vAudioReleaseAll
+vAudioLoad
+vAudioSetRepeat
+vAudioPlay
+goto
+BackScreenLoad
+BackScreenMoveSet
+CurrentBackScreenNumber
+
+#Word Color=7, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+break
+continue
+StageNumberChange
+End

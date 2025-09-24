@@ -1,0 +1,14 @@
+CurrentRam 0
+= -40
+repeat 100 1
+{
+	+++ 10
+	if > 100
+	[
+		= 100
+	]
+	pos 100 [ProgramRam(0)]
+	color 255 200 200
+	printf Stage<space>1<space>¯‹ó‚ğª‚­
+	[ScriptBreak]
+}

@@ -1,0 +1,750 @@
+
+	#packopt name "Game"
+	#packopt icon "game.ico"
+
+	onerror goto *SystemError
+	onexit goto *SystemExit
+
+	//#include "hsp3dish.as"
+
+	#include "hspogg.as"
+	dmmini
+	#include "vAudio.as"
+	vAudioInit
+
+	#include "module/NewPicBullet.as"
+	NewBulletInit
+	#include "module/Enemy.as"
+	EnemyInit
+	#include "module/PlayerShot.as"
+	PlayerShotInit
+	#include "module/ChangeScreen.hsp"
+	#include "module/BackScreen.as"
+	BackScreenInit
+	#include "module/Boss.as"
+	BossInit
+	#include "module/item.as"
+	ItemInit
+
+
+	#include "module/Select.as"
+	#include "d3m.hsp"
+	#include "mod_joystick2.as"
+
+	#const BACKSCREEN_GNUMBER 121		//背景画面用画面番号
+
+	title "東方夢想華郷 ～ Beautifully Falling Cherry Blossoms"
+
+	//エラー実験用プログラム
+	//test=0/0
+
+	dmmload "res/se/Miss.wav",11,0
+	dmmload "res/se/SPPower.wav",12,0
+
+*title_loop
+	vAudioStopAll
+	vAudioReleaseAll
+	temp=vAudioLoad("res/bgm/title.mp3")
+	vAudioSetRepeat temp,1
+	vAudioSetLoopPoints temp,0,-1
+	vAudioPlay temp
+	font msmincho,20,0
+	d3setcam 0,500,500,0,0,0
+	pos 440,440
+	color 255,255,255
+	mes "少女祈願中..."
+	buffer BACKSCREEN_GNUMBER,640,480		//背景画面生成
+	pos 0,0
+	picload "res/pic/title.png"
+	gsel 0,0
+	repeat
+		stick key
+		if key&4096 {
+			goto *SystemExit
+		}
+		if key&2048 {
+			break
+		}
+		redraw 0
+		pos 0,0
+		gmode 0
+		gcopy BACKSCREEN_GNUMBER,0,0,640,480
+		color 255,255,255
+		d3mes "Push Z Key",0,300,0
+		if cnt<50 {
+			gmode 3,0,0,255-cnt*5
+			color 255,255,255
+			pos 0,0
+			grect 320,240,0,640,480
+		}
+		redraw 1
+		await 16
+	loop
+
+*menu_loop
+	player_x=4096
+	player_y=2048
+	return_sw=0
+	SetSelectMin 1
+	SetSelectMax 4
+	VarSet 1
+	SelectColor 255,64,255,255,255,255
+	dmmstop -1
+	repeat 48
+		color 255,255,255
+		gmode 3,0,0,32
+		ChangeScreenDraw cnt*10
+		ChangeScreenDraw cnt*12
+		ChangeScreenDraw cnt*14
+		ChangeScreenDraw cnt*16
+		await 16
+	loop
+	d3setcam 0,500,500,0,0,0
+	buffer BACKSCREEN_GNUMBER,640,480		//背景画面生成
+	pos 0,0
+	picload "res/pic/title.png"
+	gsel 0,0
+	//メニュー画面(GameStartとかExtraStartとか書いてあるあれ)
+	SystemMode="MenuLoop"
+	repeat
+		jstick key,0,0
+		if key&2048 {
+			//SystemMode="GameStart"
+			break		//ゲームスタート
+		}
+		if key&4096 {
+			VarSet 4	//ゲーム終了を選択
+		}
+		if key&2 {
+			VarSelect 0
+		}
+		if key&8 {
+			VarSelect 1
+		}
+		redraw 0
+		pos 0,0
+		gmode 0
+		gcopy BACKSCREEN_GNUMBER,0,0,640,480		//背景描画
+		gmode 3,0,0,128
+		color 0,0,0
+		grect 320,240,0,640,480
+
+		repeat 4
+			pos 300-cnt*10,300+cnt*25
+			switch cnt
+			case 0
+			SelectMes "Start",1
+			swbreak
+			case 1
+			SelectMes "PracticeStart",2
+			swbreak
+			case 2
+			SelectMes "MusicRoom",3
+			swbreak
+			case 3
+			SelectMes "Exit",4
+			swbreak
+			swend
+		loop
+
+		color 255,255,255
+		gmode 3,0,0,64
+		ChangeScreenDraw 680-cnt*10
+		ChangeScreenDraw 680-cnt*12
+		ChangeScreenDraw 680-cnt*14
+		ChangeScreenDraw 680-cnt*16
+		redraw 1
+		await 16
+	loop
+	StageNumber=1
+	PlayerX=210
+	PlayerY=400
+	Life=3			//Life
+	Bom=3			//Bom
+	BomSw=0
+	if SelectInfo(0)=1 {
+		GameMode="Start"
+		goto *game_loop
+	}
+	if SelectInfo(0)=2 {
+		goto *practice_loop
+	}
+	if SelectInfo(0)=3 {
+		goto *musicRoom_loop
+	}
+	if SelectInfo(0)=4 {
+		goto *SystemExit
+	}
+	goto *title_loop
+
+*practice_loop
+	SetSelectMin 1
+	SetSelectMax 7
+	VarSet 1
+	SelectColor 255,64,255,255,255,255
+	dmmstop -1
+	repeat 48
+		color 255,255,255
+		gmode 3,0,0,32
+		ChangeScreenDraw cnt*10
+		ChangeScreenDraw cnt*12
+		ChangeScreenDraw cnt*14
+		ChangeScreenDraw cnt*16
+		await 16
+	loop
+	d3setcam 0,500,500,0,0,0
+	buffer BACKSCREEN_GNUMBER,640,480		//背景画面生成
+	pos 0,0
+	picload "res/pic/title.png"
+	gsel 0,0
+	//メニュー画面(GameStartとかExtraStartとか書いてあるあれ)
+	SystemMode="MenuLoop"
+	repeat
+		jstick key,0,0
+		if key&2048 {
+			//SystemMode="GameStart"
+			break		//決定
+		}
+		if key&4096 {
+			VarSet 7	//戻るを選択
+		}
+		if key&2 {
+			VarSelect 0
+		}
+		if key&8 {
+			VarSelect 1
+		}
+		redraw 0
+		pos 0,0
+		gmode 0
+		gcopy BACKSCREEN_GNUMBER,0,0,640,480		//背景描画
+		gmode 3,0,0,128
+		color 0,0,0
+		grect 320,240,0,640,480
+
+		pos 10,10
+		color 255,255,255
+		mes "Practice Start"
+
+		repeat 7,1
+			pos 500-cnt*3,200+cnt*25
+			if cnt=7 {
+				SelectMes "Return",7
+			}else{
+				SelectMes "Stage"+cnt,cnt
+			}
+		loop
+
+		color 255,255,255
+		gmode 3,0,0,64
+		ChangeScreenDraw 680-cnt*10
+		ChangeScreenDraw 680-cnt*12
+		ChangeScreenDraw 680-cnt*14
+		ChangeScreenDraw 680-cnt*16
+		redraw 1
+		await 16
+	loop
+	StageNumber=1
+	PlayerX=210
+	PlayerY=400
+	Life=3			//Life
+	Bom=3			//Bom
+	BomSw=0
+	if SelectInfo(0)=7 {
+		//ステージ選択されてない
+		goto *menu_loop
+	}
+	StageNumber=SelectInfo(0)
+	GameMode="Practice"
+	Life=7
+	Bom=3
+	goto *game_loop
+
+*game_loop
+	dmmstop -1
+	vAudioStopAll
+	vAudioReleaseAll
+	repeat 48
+		color 255,255,255
+		gmode 3,0,0,32
+		ChangeScreenDraw cnt*10
+		ChangeScreenDraw cnt*12
+		ChangeScreenDraw cnt*14
+		ChangeScreenDraw cnt*16
+		await 16
+	loop
+	CometBulletScriptFileName="stage/stage"+StageNumber+"/index.bdat"		//これが実行されるスクリプト
+	//ゲームメイン画面（ステージ再生用）
+	Engine_Power_off=0
+	FramePicload "res/pic/frame.png",10
+	NewBulletReset		//弾幕リセット(配置をすべて消します)
+	PlayerShotReset		//プレイヤーのショットを全削除します。
+	EnemyReset			//敵をすべて削除します。
+	BossReset			//Bossをすべてリセットします。
+
+	BulletMode=0
+	EnemyMode=0
+	player_size=15
+	MissCnt=0
+	MissSum=0
+	if_nest=0
+	NoBulletDamage=0
+	bgm_number=0
+	PerfectChallenge=0
+	BackScreenDrawNum=0
+	ddim ProgramRam,16
+	dim script_line_return,1024
+	dim repeat_cnt,256
+	dim repeat_time,256
+	dim script_repeat_line,256
+	repeat_nest=0
+	sdim ScriptBit,64
+	sdim enzan_temp,32
+
+	EngineProgramRam=""			//EnemyFunctionの保存場所
+
+	script_line=0
+	randomize
+	exist CometBulletScriptFileName
+	if strsize=-1 {
+		dialog "ステージスクリプトが存在しません！",1,"Error"
+		end
+	}
+	notesel stage_fragment_script
+	noteload CometBulletScriptFileName
+	dmmload "res/se/Miss.wav",0,0
+	dmmload "res/se/SPPower.wav",50,0
+
+*pre_run
+		//pre_run
+		pre_run_restart=0
+		notesel stage_fragment_script
+		repeat notemax
+			noteget temp,cnt
+			temp=strtrim(temp,3,'	')
+			temp=strtrim(temp,0,' ')
+			split temp," ",ScriptBit(0)
+			if ScriptBit(0)="#include" {
+				noteadd "",cnt,1
+				notesel temp_script
+				exist ScriptBit(1)
+				if strsize=-1 {
+					dialog "#include error no file.",1,"error"
+					end
+				}
+				noteload ScriptBit(1)
+				cnt_t=cnt
+				repeat notemax
+					notesel temp_script
+					noteget temp,cnt
+					notesel stage_fragment_script
+					noteadd temp,cnt_t+cnt,0
+				loop
+				notesel stage_fragment_script
+				pre_run_restart=1
+				break
+			}
+			if ScriptBit(0)="#addition" {
+				noteadd "",cnt,1
+				notesel temp_script
+				exist ScriptBit(1)
+				if strsize!-1 {
+					noteload ScriptBit(1)
+					cnt_t=cnt
+					repeat notemax
+						notesel temp_script
+						noteget temp,cnt
+						notesel stage_fragment_script
+						noteadd temp,cnt_t+cnt,0
+					loop
+				}
+				notesel stage_fragment_script
+				pre_run_restart=1
+				break
+			}
+		loop
+	if pre_run_restart=1 {
+		goto *pre_run
+	}
+		repeat notemax
+			noteget temp,cnt
+			temp=strtrim(temp,3,'	')
+			temp=strtrim(temp,0,' ')
+			split temp,",",ScriptBit(0)
+			if ScriptBit(0)="#var" {
+				//非推奨
+				notesel stage_fragment_script
+				noteadd "",cnt,1
+				var_name=ScriptBit(1)
+				var_number=ScriptBit(2)
+				repeat notemax
+					noteget temp,cnt
+					temp=strtrim(temp,3,'	')
+					temp=strtrim(temp,3,' ')
+					if instr(temp,0,var_name)!-1 {
+						if strmid(temp,0,10)="CurrentRam" or strmid(temp,0,5)="print" or strmid(temp,0,3)="var" {
+							strrep temp,ScriptBit(1),ScriptBit(2)
+						}else{
+							strrep temp,str(ScriptBit(1)),"[ProgramRam("+str(ScriptBit(2))+")]"
+						}
+						noteadd temp,cnt,1
+					}
+				loop
+			}
+			if ScriptBit(0)="#const" {
+				notesel stage_fragment_script
+				noteadd "",cnt,1
+				const_start=ScriptBit(1)
+				const_end=ScriptBit(2)
+				repeat notemax
+					noteget temp,cnt
+					if instr(temp,0,const_start)!-1 {
+						strrep temp,ScriptBit(1),ScriptBit(2)
+						noteadd temp,cnt,1
+					}
+				loop
+			}
+		loop
+
+	SystemMode="GameStart"
+	repeat
+		PastSystemTimer=d3timer()
+		if key&128 {
+			//一時停止
+			SystemMode="GameBreak"
+			gosub *PauseDraw
+			continue 0
+		}
+		if key&64 {
+			if HighSpeedMode=0 {
+				HighSpeedMode=1
+			}else{
+				HighSpeedMode=0
+			}
+		}
+		if Engine_Power_off=1 {
+			break
+		}
+		if Engine_Power_off=2 {
+			break
+		}
+		if Engine_Power_off=3 {
+			break
+		}
+		BackScreenMove		//背景を再生
+		NewBulletMove		//すべての弾を移動
+		EnemyMove			//敵の移動
+		BossMove			//ボスの移動
+		PlayerMove			//プレイヤーキー入力受付＆移動
+		PlayerShotMove		//プレイヤーショット関係の処理（移動こみ）
+		NowSystemTimer=d3timer()
+		if HighSpeedMode=1 {
+			if (NowSystemTimer-PastSystemTimer)>2 {
+				CometBulletScriptRun
+				continue cnt
+			}
+		}else{
+			if (NowSystemTimer-PastSystemTimer)>16 {
+				CometBulletScriptRun
+				continue cnt
+			}
+		}
+		redraw 0
+		gmode 0
+		BackScreenDraw		//背景描画
+		EnemyDraw			//敵を描画
+		BossDraw			//ボスの描画
+		PlayerShotDraw		//自分の弾を描画
+		NewBulletDraw		//弾を描画
+		PlayerPointDraw			//プレイヤー（正確な位置）を描画
+		FrameDraw		//画面の枠の表示（ライフとかの表示もここ。）
+
+		CometBulletScriptRun		//ステージスクリプト動かす
+
+		//FPS描画
+		pos 580,460
+		color 255,255,255
+		mes str(d3getfps())+"fps"
+		NowSystemTimer=d3timer()
+		pos 540,440
+		mes "delay"+(NowSystemTimer-PastSystemTimer)+"ms"
+		color 255,255,255
+		gmode 3,0,0,64
+		ChangeScreenDraw 680-cnt*10
+		ChangeScreenDraw 680-cnt*12
+		ChangeScreenDraw 680-cnt*14
+		ChangeScreenDraw 680-cnt*16
+		redraw 1
+		if Life<0 {
+			break
+		}
+		if HighSpeedMode=1 {
+			await 2
+		}else{
+			await 16
+		}
+	loop
+	repeat 48
+		color 255,255,255
+		gmode 3,0,0,32
+		ChangeScreenDraw cnt*10
+		ChangeScreenDraw cnt*12
+		ChangeScreenDraw cnt*14
+		ChangeScreenDraw cnt*16
+		await 16
+	loop
+	vAudioStopAll
+	vAudioReleaseAll
+	if Engine_Power_off=2 {
+		if GameMode="Start" {
+			goto *game_loop
+		}
+	}
+	if Engine_Power_off=3 {
+		goto *game_loop
+	}
+	MissCnt=0
+	temp=vAudioLoad("res/bgm/title.mp3")
+	vAudioSetRepeat temp,1
+	vAudioSetLoopPoints temp,0,-1
+	vAudioPlay temp
+	goto *menu_loop
+
+*PauseDraw
+	repeat 48
+		color 255,255,255
+		gmode 3,0,0,32
+		ChangeScreenDraw cnt*10
+		ChangeScreenDraw cnt*12
+		ChangeScreenDraw cnt*14
+		ChangeScreenDraw cnt*16
+		await 16
+	loop
+	d3setcam 0,500,500,0,0,0
+	repeat
+		jstick key
+		if key&128 {
+			break
+		}
+		if key&4096 {
+			Engine_Power_off=1
+			break
+		}
+		redraw 0
+		pos 0,0
+		gmode 0
+		gcopy BACKSCREEN_GNUMBER,0,0,640,480		//背景描画
+
+		color 255,255,255
+		d3mes "一時停止中",0,300,0
+
+		color 255,255,255
+		gmode 3,0,0,64
+		ChangeScreenDraw 680-cnt*10
+		ChangeScreenDraw 680-cnt*12
+		ChangeScreenDraw 680-cnt*14
+		ChangeScreenDraw 680-cnt*16
+		redraw 1
+		await 16
+	loop
+	key=0
+	if Engine_Power_off!1 {
+		repeat 48
+			color 255,255,255
+			gmode 3,0,0,32
+			ChangeScreenDraw cnt*10
+			ChangeScreenDraw cnt*12
+			ChangeScreenDraw cnt*14
+			ChangeScreenDraw cnt*16
+			await 16
+		loop
+	}
+	return
+
+*musicRoom_loop
+	playing_music=-1
+	playerX=-100
+	playerY=-100
+	NewBulletInit
+	cnt_t=0
+	exist "stage/musicFileList.bdat"
+	if strsize=-1 {
+		goto *menu_loop
+	}
+	notesel music_data_txt
+	noteload "stage/musicFileList.bdat"
+	SetSelectMin 0
+	SetSelectMax notemax
+	VarSet 0
+	selectmove=0
+	SelectColor 255,64,255,255,255,255
+	dmmstop -1
+	repeat 48
+		color 255,255,255
+		gmode 3,0,0,32
+		ChangeScreenDraw cnt*10
+		ChangeScreenDraw cnt*12
+		ChangeScreenDraw cnt*14
+		ChangeScreenDraw cnt*16
+	loop
+	d3setcam 0,500,500,0,0,0
+	buffer BACKSCREEN_GNUMBER,640,480		//背景画面生成
+	pos 0,0
+	picload "res/pic/title.png"
+	gsel 0,0
+	SystemMode="MusicRoomLoop"
+	repeat
+		jstick key,0,0
+		if key&2048 {
+			//選択中の音楽を再生
+			vAudioStopAll
+			vAudioReleaseAll
+			if playing_music=SelectInfo(0) {
+				playing_music=-1
+				continue cnt
+			}
+			noteget temp_mes,SelectInfo(0)
+			if temp_mes!"" {
+				strrep temp_mes,"	",""
+				strrep temp_mes," ",""
+				strrep temp_mes,"<space>"," "
+				split temp_mes,",",musicname,musicfilepass,SetLoopPointStart,SetLoopPointEnd
+				split temp_mes,",",musicname,musicfilepass,SetLoopPointStart,SetLoopPointEnd
+				musicNumber=vAudioLoad(musicfilepass)
+				vAudioSetRepeat musicNumber,1
+				vAudioSetLoopPoints musicNumber,int(SetLoopPointStart),int(SetLoopPointEnd)
+				vAudioPlay musicNumber
+				playing_music=SelectInfo(0)
+			}
+		}
+		if key&4096 {
+			//SystemMode="GameStart"
+			break		//戻る
+		}
+		if key&2 {
+			VarSelect 0
+			repeat 1
+				if SelectInfo(0)<selectmove {
+					selectmove--
+					continue 0
+				}
+				if SelectInfo(0)>selectmove+4 {
+					selectmove++
+					continue 0
+				}
+			loop
+		}
+		if key&8 {
+			VarSelect 1
+			repeat 1
+				if SelectInfo(0)<selectmove {
+					selectmove--
+					continue 0
+				}
+				if SelectInfo(0)>selectmove+4 {
+					selectmove++
+					continue 0
+				}
+			loop
+		}
+		redraw 0
+		pos 0,0
+		gmode 0
+		gcopy BACKSCREEN_GNUMBER,0,0,640,480		//背景描画
+			if playing_music!-1 {
+				if cnt_t<50 {
+					cnt_t+2
+				}
+			}else{
+				if cnt_t>0 {
+					cnt_t-2
+				}
+			}
+			repeat 32
+				color 64,64,255
+				line cnt*20,360+sin(deg2rad(cnt_deg+cnt*20))*cnt_t,(cnt+1)*20,360+sin(deg2rad(cnt_deg+(cnt+1)*20))*cnt_t
+				line cnt*20,360+sin(deg2rad(cnt_deg+cnt*20+90))*cnt_t,(cnt+1)*20,360+sin(deg2rad(cnt_deg+(cnt+1)*20+90))*cnt_t
+				color 127,127,255
+				line cnt*20,360+sin(deg2rad((cnt_deg*3/2)+cnt*20))*cnt_t,(cnt+1)*20,360+sin(deg2rad((cnt_deg*3/2)+(cnt+1)*20))*cnt_t
+				line cnt*20,360+sin(deg2rad((cnt_deg*3/2)+cnt*20+90))*cnt_t,(cnt+1)*20,360+sin(deg2rad((cnt_deg*3/2)+(cnt+1)*20+90))*cnt_t
+				color 255,255,255
+				line cnt*20,360+sin(deg2rad(cnt_deg*2+cnt*20))*cnt_t,(cnt+1)*20,360+sin(deg2rad(cnt_deg*2+(cnt+1)*20))*cnt_t
+				line cnt*20,360+sin(deg2rad(cnt_deg*2+cnt*20+90))*cnt_t,(cnt+1)*20,360+sin(deg2rad(cnt_deg*2+(cnt+1)*20+90))*cnt_t
+				color 64,64,255
+				line cnt*20,120+sin(deg2rad(cnt_deg+cnt*20))*cnt_t,(cnt+1)*20,120+sin(deg2rad(cnt_deg+(cnt+1)*20))*cnt_t
+				line cnt*20,120+sin(deg2rad(cnt_deg+cnt*20+90))*cnt_t,(cnt+1)*20,120+sin(deg2rad(cnt_deg+(cnt+1)*20+90))*cnt_t
+				color 127,127,255
+				line cnt*20,120+sin(deg2rad((cnt_deg*3/2)+cnt*20))*cnt_t,(cnt+1)*20,120+sin(deg2rad((cnt_deg*3/2)+(cnt+1)*20))*cnt_t
+				line cnt*20,120+sin(deg2rad((cnt_deg*3/2)+cnt*20+90))*cnt_t,(cnt+1)*20,120+sin(deg2rad((cnt_deg*3/2)+(cnt+1)*20+90))*cnt_t
+				color 255,255,255
+				line cnt*20,120+sin(deg2rad(cnt_deg*2+cnt*20))*cnt_t,(cnt+1)*20,120+sin(deg2rad(cnt_deg*2+(cnt+1)*20))*cnt_t
+				line cnt*20,120+sin(deg2rad(cnt_deg*2+cnt*20+90))*cnt_t,(cnt+1)*20,120+sin(deg2rad(cnt_deg*2+(cnt+1)*20+90))*cnt_t
+			loop
+			cnt_deg+5
+			if cnt_deg>720 {
+				cnt_deg-720
+			}
+		gmode 3,0,0,128
+		color 0,0,0
+		grect 320,240,0,640,480
+
+		pos 10,10
+		color 255,255,255
+		mes "Music Room"
+
+		repeat 5,0
+			pos 100-cnt*3,320+cnt*25
+			noteget temp_mes,cnt+selectmove
+			strrep temp_mes,"	",""
+			strrep temp_mes," ",""
+			strrep temp_mes,"<space>"," "
+			split temp_mes,",",musicname,musicfilepass,SetLoopPointStart,SetLoopPointEnd
+			if temp_mes="" {
+				SelectMes "No. "+int(cnt+selectmove)+" : -----",cnt+selectmove
+			}else{
+				SelectMes "No. "+int(cnt+selectmove)+" : "+musicname,cnt+selectmove
+			}
+		loop
+
+		color 255,255,255
+		gmode 3,0,0,64
+		ChangeScreenDraw 680-cnt*10
+		ChangeScreenDraw 680-cnt*12
+		ChangeScreenDraw 680-cnt*14
+		ChangeScreenDraw 680-cnt*16
+		redraw 1
+		await 16
+	loop
+	vAudioStopAll
+	vAudioReleaseAll
+	temp=vAudioLoad("res/bgm/title.mp3")
+	vAudioSetRepeat temp,1
+	vAudioSetLoopPoints temp,0,-1
+	vAudioPlay temp
+	goto *menu_loop
+
+*SystemError
+	//万が一エラーが発生した場合に起こる処理
+	//logmes repeat_nest
+	logmes stage_fragment_script
+	dialog "SystemError\nエラー番号:"+wparam+"\n発生行:"+lparam+"\nこのエラーが何度も再発する場合は\nゲームの再インストールを推奨します。\nScriptLine"+script_line,1,"SystemError"
+
+*SystemExit
+	//終了処理（ここではエラーが絶対に発生しないような作りにしよう）
+	end
+
+#defcfunc PlayerInfo int PlayerInfoPrm1
+	switch PlayerInfoPrm1
+		case 0
+			return PlayerX
+			swbreak
+		case 1
+			return PlayerY
+			swbreak
+	swend
+	return -1		//エラー
+
+	//各種システムファイルを下に列挙
+	#include "system/FrameDraw.hsp"
+	#include "system/player.hsp"
+	#include "system/script_player.hsp"

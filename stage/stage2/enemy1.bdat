@@ -1,0 +1,129 @@
+	CurrentRam 0
+	= rnd(100)
+	+++ 150
+repeat 4 1
+{
+	NewBulletShape 9
+	CurrentRam 3
+	= rnd(360)
+	CurrentNewBulletClass 0
+	EnemyCurrentClass -2
+	EnemyTypeSet 0
+	EnemySet [ProgramRam(0)] -10 0 90 200 30
+	repeat 12 1
+	{
+		CurrentRam 1
+		+++ 30
+		CurrentRam 2
+		= [ProgramRam(1)]
+		+++ [ProgramRam(3)]
+		CurrentRam 4
+		= 0
+		repeat 3 1
+		{
+			CurrentRam 5
+			= [ProgramRam(4)]
+			// 32
+			NewBulletColor 2
+			@Enemy[NewBulletSet] 0 0 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(2)],[ProgramRam(4)]) 18 0
+			CurrentRam 4
+			+++ 10
+			CurrentRam 5
+			= [ProgramRam(4)]
+			// 32
+			NewBulletColor 4
+			@Enemy[NewBulletSet] 0 0 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(2)],[ProgramRam(4)]) 18 0
+			CurrentRam 4
+			+++ 10
+			CurrentRam 5
+			= [ProgramRam(4)]
+			// 32
+			NewBulletColor 8
+			@Enemy[NewBulletSet] 0 0 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(2)],[ProgramRam(4)]) 18 0
+			CurrentRam 4
+			+++ 10
+		}
+	}
+	CurrentRam 1
+	= 0
+	CurrentRam 0
+	= rnd(100)
+	+++ 150
+	repeat 300 0
+	{
+		EnemySpeedAddClass -2 0.005
+		EnemyClassChange 0 -2 -1 145
+		EnemySpeedAddClass -1 -0.005
+		EnemyClassChange 0 -1 0 290
+		NewBulletClassChange 0 0 1 100
+		NewBulletClassChange 0 1 2 200
+		NewBulletClassChange 0 2 3 300
+		NewBulletDegChangeClass -4 0
+		NewBulletDegChangeClass -2 1
+		NewBulletDegChangeClass 0.5 2
+		EnemyClassChange 0 0 1 550
+		EnemySpeedAddClass 1 0.05
+		EnemyDegAimPlayerClass 1
+		EnemyClassChange 0 1 2 570
+		EnemyDegAimPlayerClass 2
+		NewBulletColor 0
+		CurrentRam 6
+		= rnd(30)
+		NewBulletShape 3
+		repeat 3 1
+		{
+			CurrentRam 6
+			+++ 120
+			@Enemy[NewBulletSet] 0 0 3.4 [ProgramRam(6)] 16 2
+		}
+		NewBulletColor 2
+		+++ 60
+		repeat 3 1
+		{
+			CurrentRam 6
+			+++ 120
+			@Enemy[NewBulletSet] 0 0 3.4 [ProgramRam(6)] 16 2
+		}
+		EnemyClassChange 0 2 3 600
+		[ScriptBreak]
+	}
+}
+
+repeat 600 1
+{
+	EnemySpeedAddClass -2 0.005
+	EnemyClassChange 0 -2 -1 145
+	EnemySpeedAddClass -1 -0.005
+	EnemyClassChange 0 -1 0 290
+	NewBulletClassChange 0 0 1 100
+	NewBulletClassChange 0 1 2 200
+	NewBulletClassChange 0 2 3 300
+	NewBulletDegChangeClass -4 0
+	NewBulletDegChangeClass -2 1
+	NewBulletDegChangeClass 0.5 2
+	EnemyClassChange 0 0 1 550
+	EnemySpeedAddClass 1 0.05
+	EnemyDegAimPlayerClass 1
+	EnemyClassChange 0 1 2 570
+	EnemyDegAimPlayerClass 2
+	NewBulletColor 0
+	CurrentRam 6
+	= rnd(30)
+	NewBulletShape 3
+	repeat 3 1
+	{
+		CurrentRam 6
+		+++ 120
+		@Enemy[NewBulletSet] 0 0 3.4 [ProgramRam(6)] 16 2
+	}
+	NewBulletColor 2
+	+++ 60
+	repeat 3 1
+	{
+		CurrentRam 6
+		+++ 120
+		@Enemy[NewBulletSet] 0 0 3.4 [ProgramRam(6)] 16 2
+	}
+	EnemyClassChange 0 2 3 600
+	[ScriptBreak]
+}

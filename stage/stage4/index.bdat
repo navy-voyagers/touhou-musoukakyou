@@ -1,0 +1,80 @@
+BackScreenLoad stage/stage4/stage4.png 1
+BackScreenMoveSet 1 0 0
+CurrentBackScreenNumber 1
+
+repeat 100 1
+{
+	[ScriptBreak]
+}
+
+repeat 100 1
+{
+	repeat 50 1
+	{
+		color 0 0 255
+		repeat 1 0
+		{
+			CurrentRam cnt()
+			= rnd(640)
+		}
+		boxf [ProgramRam(0)] [ProgramRam(1)] NumberSum([ProgramRam(0)],30) NumberSum([ProgramRam(1)],30)
+	}
+	[ScriptBreak]
+}
+
+repeat 200 1
+{
+	color 0 0 255
+	boxf 0 0 640 480
+	repeat 1 0
+	{
+		CurrentRam cnt()
+		= rnd(5)
+	}
+	pos [ProgramRam(0)] [ProgramRam(1)]
+	color 255 255 255
+	printf Error
+	repeat 30 1
+	{
+		printf This<space>system<space>go<space>on<space>the<space>safe<space>mode.
+	}
+	[ScriptBreak]
+}
+
+repeat 200 1
+{
+	SetPlayerLife 6
+	NewBulletColor rnd(5)
+	NewBulletShape rnd(13)
+	NewBulletSet rnd(640) -500 3 0 30
+	color 0 0 0
+	boxf 0 0 640 480
+	[ScriptBreak]
+}
+
+BackScreenLoad stage/stage4/stageerror.png 1
+BackScreenMoveSet 1 0 0
+CurrentBackScreenNumber 1
+repeat 100 1
+{
+	repeat 3 1
+	{
+		color 0 0 255
+		repeat 1 0
+		{
+			CurrentRam cnt()
+			= rnd(640)
+		}
+		boxf [ProgramRam(0)] [ProgramRam(1)] NumberSum([ProgramRam(0)],30) NumberSum([ProgramRam(1)],30)
+	}
+	repeat 3 0
+	{
+		SetPlayerLife 5
+		NewBulletColor rnd(5)
+		NewBulletShape rnd(13)
+		NewBulletSet rnd(640) rnd(480) 0 rnd(360) customrnd(10,30)
+	}
+	[ScriptBreak]
+}
+
+StageNumberChangeForce ‚¿‚é‚Ì

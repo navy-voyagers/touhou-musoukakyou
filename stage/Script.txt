@@ -1,0 +1,60 @@
+CurrentRam 0
+= 150
+*main
+	NewBulletShape 9
+	CurrentRam 3
+	= rnd(360)
+	CurrentNewBulletClass 0
+	repeat 12 1
+	{
+		CurrentRam 1
+		+++ 30
+		CurrentRam 2
+		= [ProgramRam(1)]
+		+++ [ProgramRam(3)]
+		CurrentRam 4
+		= 0
+		repeat 3 1
+		{
+			CurrentRam 5
+			= [ProgramRam(4)]
+			// 32
+			NewBulletColor 3
+			NewBulletSet [ProgramRam(0)] 100 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(2)],[ProgramRam(4)]) 18
+			CurrentRam 4
+			+++ 8
+			CurrentRam 5
+			= [ProgramRam(4)]
+			// 32
+			NewBulletColor 5
+			NewBulletSet [ProgramRam(0)] 100 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(2)],[ProgramRam(4)]) 18
+			CurrentRam 4
+			+++ 8
+			CurrentRam 5
+			= [ProgramRam(4)]
+			// 32
+			NewBulletColor 1
+			NewBulletSet [ProgramRam(0)] 100 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(2)],[ProgramRam(4)]) 18
+			CurrentRam 4
+			+++ 8
+		}
+	}
+	CurrentRam 1
+	= 0
+	CurrentRam 0
+	+++ 15
+	if > 310
+	[
+		= 150
+	]
+	repeat 300 1
+	{
+		NewBulletClassChange 0 0 1 100
+		NewBulletClassChange 0 1 2 200
+		NewBulletClassChange 0 2 3 300
+		NewBulletDegChangeClass -4 0
+		NewBulletDegChangeClass -2 1
+		NewBulletDegChangeClass 0.5 2
+		[ScriptBreak]
+	}
+	goto *main

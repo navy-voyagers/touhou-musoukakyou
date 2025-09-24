@@ -1,0 +1,28 @@
+BackScreenLoad stage/stage4/stage4.png 1
+BackScreenMoveSet 1 0 0
+CurrentBackScreenNumber 1
+
+CurrentRam 0
+vAudioLoad stage/stage3/music.mp3
+vAudioSetRepeat [ProgramRam(0)] 1
+vAudioPlay [ProgramRam(0)]
+
+CurrentRam 0
+= -40
+repeat 100 1
+{
+	+++ 10
+	if > 100
+	[
+		= 100
+	]
+	pos 100 [ProgramRam(0)]
+	color 255 64 64
+	printf Stage<space>3<space>gF‚Éõ‚Ü‚éŒ¶‘z‹½
+	[ScriptBreak]
+}
+
+#include stage/stage3/enemy1.bdat
+
+
+StageNumberChangeForce ‚¿‚é‚Ì
