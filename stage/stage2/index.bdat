@@ -6,7 +6,7 @@ CurrentBackScreenNumber 1
 ..goto *Marisa-Stage2Boss
 
 CurrentRam 0
-vAudioLoad stage/stage2/stage2.mp3
+vAudioLoad stage/stage2/stage2_midi.mp3
 vAudioSetRepeat [ProgramRam(0)] 1
 vAudioPlay [ProgramRam(0)]
 
@@ -15,8 +15,8 @@ repeat 100 1
 	[ScriptBreak]
 }
 
-#include stage/stage2/enemy3.bdat
 #include stage/stage2/stage2logo.bdat
+#include stage/stage2/enemy1.bdat
 
 #include stage/stage2/enemy1.bdat
 #include stage/stage2/enemy2.bdat
@@ -35,7 +35,7 @@ repeat 100 1
 vAudioStopAll
 vAudioReleaseAll
 CurrentRam 0
-vAudioLoad stage/stage2/stage2boss.mp3
+vAudioLoad stage/stage2/stage2boss_midi.mp3
 vAudioSetRepeat [ProgramRam(0)] 1
 vAudioPlay [ProgramRam(0)]
 #include stage/stage2/boss1.bdat

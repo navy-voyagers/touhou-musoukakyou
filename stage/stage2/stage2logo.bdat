@@ -9,6 +9,6 @@ repeat 100 1
 	]
 	pos 100 [ProgramRam(0)]
 	color 255 255 64
-	printf Stage<space>2<space>‰Â—÷‚Éç‚­‰Ô”¨‚É
+	printf Stage<space>2<space>‰ù‚©‚µ‚«•—Œi‚Æ‹¤‚É
 	[ScriptBreak]
 }

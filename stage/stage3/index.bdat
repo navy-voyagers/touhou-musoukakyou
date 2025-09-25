@@ -3,7 +3,7 @@ BackScreenMoveSet 1 0 0
 CurrentBackScreenNumber 1
 
 CurrentRam 0
-vAudioLoad stage/stage3/music.mp3
+vAudioLoad stage/stage3/stage3_midi.mp3
 vAudioSetRepeat [ProgramRam(0)] 1
 vAudioPlay [ProgramRam(0)]
 
