@@ -1,0 +1,35 @@
+BackScreenLoad stage/stage1/stage1.png 1
+BackScreenMoveSet 1 0 0
+CurrentBackScreenNumber 1
+
+..goto *BOSS-MID-Stage1
+..goto *Marisa-Stage1Boss
+
+CurrentRam 0
+vAudioLoad stage/stage1/stage1_midi.mp3
+vAudioSetRepeat [ProgramRam(0)] 1
+vAudioPlay [ProgramRam(0)]
+
+repeat 100 1
+{
+	[ScriptBreak]
+}
+
+repeat 1000 0
+{
+	pos 100 100
+	color 255 0 0
+	printf SAMPLE<space>OF<space>EASY
+	[ScriptBreak]
+}
+
+*Marisa-Stage1Boss
+vAudioStopAll
+vAudioReleaseAll
+CurrentRam 0
+vAudioLoad stage/stage1/stage1boss_midi.mp3
+vAudioSetRepeat [ProgramRam(0)] 1
+vAudioPlay [ProgramRam(0)]
+#include stage/stage1/boss1.bdat
+
+StageNumberChange 2
