@@ -1,4 +1,4 @@
-BossPicSet stage/stage1/bossImg.png 2 210 0
+BossPicSet stage/stage2/bossImg.png 2 210 0
 
 BossSet 210 -30 500 3 60
 BossReplace 0 210 40

@@ -6,7 +6,11 @@ CurrentBackScreenNumber 1
 ..goto *Marisa-Stage1Boss
 
 CurrentRam 0
+<<<<<<< HEAD
+vAudioLoad music/stage1/doutyu/stage1.mp3
+=======
 vAudioLoad stage/stage1/stage1_midi.mp3
+>>>>>>> cbb49840e868a437b87b7f7178f11bd57bc52532
 vAudioSetRepeat [ProgramRam(0)] 1
 vAudioPlay [ProgramRam(0)]
 
@@ -27,7 +31,11 @@ repeat 1000 0
 vAudioStopAll
 vAudioReleaseAll
 CurrentRam 0
+<<<<<<< HEAD
+vAudioLoad music/stage1/boss/stage1boss.mp3
+=======
 vAudioLoad stage/stage1/stage1boss_midi.mp3
+>>>>>>> cbb49840e868a437b87b7f7178f11bd57bc52532
 vAudioSetRepeat [ProgramRam(0)] 1
 vAudioPlay [ProgramRam(0)]
 #include stage/stage1/boss1.bdat
