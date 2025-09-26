@@ -78,3 +78,6 @@ break
 continue
 StageNumberChange
 End
+
+#Word Color=0, WholeWord=False, RightSide=False, RightAll=False, MatchCase=True, InsideTag=False, RegEx=False
+CurrentDifficultNumber
