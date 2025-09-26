@@ -1,10 +1,15 @@
-美しき夢物語, res/bgm/title_midi.mp3, 0, -1
-桜花野に咲く一輪の花 , stage/stage1/stage1_midi.mp3, 0 ,-1
-夢と希望の構想曲, stage/stage1/stage1boss_midi.mp3, 0, -1
-夢幻空間, stage/stage2/stage2_midi.mp3, 0, -1
-おぼろげに浮かびし三つの騒霊, stage/stage2/stage2boss_midi.mp3, 0, -1
-あなたとカラス天狗の夜明け物語, stage/stage3/stage3_midi.mp3, 0, -1
-い
-う
-え
-お
+美しき夢物語, music/title/title_midi.mp3, 0, -1
+桜花野に咲く一輪の花, music/stage1/doutyu/stage1_midi.mp3, 0 ,-1
+夢と希望の構想曲, music/stage1/boss/stage1boss_midi.mp3, 0, -1
+夢幻空間, music/stage2/doutyu/stage2_midi.mp3, 0, -1
+おぼろげに浮かびし三つの騒霊, music/stage2/boss/stage2boss_midi.mp3, 0, -1
+あなたとカラス天狗の夜明け物語, music/stage3/doutyu/stage3_midi.mp3, 0, -1
+恋色マジック, music/stage3/boss/stage3boss_midi.mp3, 0, -1
+シンデレラゲージ, music/stage4/doutyu/stage4_midi.mp3, 0, -1
+夢と希望の五芒星, music/stage4/boss/stage4boss_midi.mp3, 0, -1
+少女が見た真夏の夜空, music/stage5/doutyu/stage5_midi.mp3, 0, -1
+時代遅れの新聞配達人, music/stage5/boss/stage5boss_midi.mp3, 0, -1
+少女の魅惑の瞳, music/stage6/doutyu/stage6_midi.mp3, 0, -1
+幽霊たちの音楽隊, music/stage6/boss/stage6boss_midi.mp3, 0, -1
+桜散りし夢の丘, music/ending/ending_midi.mp3, 0, -1
+終わる夢物語, music/staffrole/staffrole_midi.mp3, 0, -1
