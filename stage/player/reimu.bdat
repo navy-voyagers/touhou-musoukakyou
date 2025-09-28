@@ -1,0 +1,9 @@
+@Player[Picload] stage/player/reimu.png 50
+@Player[Size] 40
+@Player[SetSpeed] 5 2
+@Player[ShotType] 0 1
+@Player[ShotColor] 2 0
+@Player[ShotShape] 9 9
+@Player[ShotSize] 14 10
+
+[ScriptBreak]

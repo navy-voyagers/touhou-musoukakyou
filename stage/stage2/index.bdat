@@ -37,4 +37,4 @@ vAudioSetRepeat [ProgramRam(0)] 1
 vAudioPlay [ProgramRam(0)]
 #include stage/stage2/boss1.bdat
 
-End
+StageNumberChange 3
