@@ -1,10 +1,10 @@
-BossPicSet stage/stage2/mainbossImg.png 2 210 0
+BossPicSet res/pic/miniboss2.png 2 210 0
 BossSet 210 -30 3000 3 60
 BossReplace 0 210 40
 
 repeat 1000 0
 {
-	NewBulletShape 2
+	NewBulletShape 7
 	repeat 30 1
 	{
 		CurrentNewBulletClass 0
@@ -31,7 +31,7 @@ repeat 1000 0
 		[ScriptBreak]
 	}
 	NewBulletColor 1
-	NewBulletShape 11
+	NewBulletShape 14
 	repeat 5 1
 	{
 		CurrentRam 2
@@ -40,12 +40,12 @@ repeat 1000 0
 		// 2
 		repeat 3 1
 		{
-			CurrentRam 1
+			CurrentRam 5
 			= cnt()
 			--- 2
 			** 20
 			CurrentNewBulletClass 2
-			@Boss[NewBulletSetPAim] 0 0 [ProgramRam(2)] [ProgramRam(1)] 30 0
+			@Boss[NewBulletSetPAim] 0 0 [ProgramRam(2)] [ProgramRam(5)] 30 0
 		}
 		repeat 5 1
 		{
@@ -71,18 +71,18 @@ repeat 1000 0
 一枚目
 repeat 1000 0
 {
-	NewBulletShape 2
+	NewBulletShape 4
 	repeat 10 1
 	{
 		NewBulletColor 8
 		repeat 5 1
 		{
-			CurrentRam 1
+			CurrentRam 5
 			+++ 3
 			repeat 12 1
 			{
-				@Boss[NewBulletSet] 0 0 3 [ProgramRam(1)] 20 0
-				+++ 30
+				@Boss[NewBulletSet] 0 0 3 [ProgramRam(5)] 20 0
+				+++ 34
 				if > 360
 				[
 					--- 360
@@ -97,11 +97,11 @@ repeat 1000 0
 		NewBulletColor 6
 		repeat 5 1
 		{
-			CurrentRam 1
+			CurrentRam 6
 			+++ 3
 			repeat 12 1
 			{
-				@Boss[NewBulletSet] 0 0 3 NumberScale([ProgramRam(1)],-1) 20 0
+				@Boss[NewBulletSet] 0 0 3 NumberScale([ProgramRam(6)],-1) 20 0
 				+++ 30
 				if > 360
 				[
@@ -131,7 +131,7 @@ repeat 1000 0
 
 repeat 1000 0
 {
-	NewBulletShape 2
+	NewBulletShape 6
 	repeat 30 1
 	{
 		CurrentNewBulletClass 0
@@ -158,7 +158,7 @@ repeat 1000 0
 		[ScriptBreak]
 	}
 	NewBulletColor 1
-	NewBulletShape 11
+	NewBulletShape 9
 	repeat 5 1
 	{
 		CurrentRam 2
@@ -199,7 +199,7 @@ repeat 1000 0
 
 repeat 1000 0
 {
-	NewBulletShape 2
+	NewBulletShape 6
 	repeat 10 1
 	{
 		repeat 5 1
@@ -262,7 +262,7 @@ repeat 1000 0
 
 repeat 1000 0
 {
-	NewBulletShape 11
+	NewBulletShape 4
 	repeat 10 1
 	{
 		NewBulletColor 8

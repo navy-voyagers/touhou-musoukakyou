@@ -3,7 +3,7 @@
 	+++ 150
 repeat 4 1
 {
-	NewBulletShape 7
+	NewBulletShape 5
 	CurrentRam 3
 	= rnd(360)
 	CurrentNewBulletClass 0
@@ -25,11 +25,11 @@ repeat 4 1
 			= [ProgramRam(4)]
 			// 32
 			NewBulletColor 3
-			@Enemy[NewBulletSet] 0 0 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(2)],[ProgramRam(4)]) 18 0
-			CurrentRam 4
-			+++ 8
+			@Enemy[NewBulletSet] 0 0 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(1)],[ProgramRam(2)]) 18 0
 			CurrentRam 5
-			= [ProgramRam(4)]
+			+++ 6
+			CurrentRam 5
+			= [ProgramRam(5)]
 			// 32
 			NewBulletColor 5
 			@Enemy[NewBulletSet] 0 0 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(2)],[ProgramRam(4)]) 18 0
@@ -72,9 +72,9 @@ repeat 4 1
 		NewBulletShape 0
 		repeat 3 1
 		{
-			CurrentRam 6
-			+++ 120
-			@Enemy[NewBulletSet] 0 0 3.4 [ProgramRam(6)] 16 2
+			CurrentRam 1
+			+++ 50
+			@Enemy[NewBulletSet] 0 0 3.4 [ProgramRam(1)] 16 2
 		}
 		NewBulletColor 4
 		+++ 60

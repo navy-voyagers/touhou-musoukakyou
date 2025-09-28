@@ -1,4 +1,4 @@
-BossPicSet stage/stage2/bossImg.png 2 210 0
+BossPicSet res/pic/miniboss2.png 2 210 0
 
 BossSet 210 -30 500 3 60
 BossReplace 0 210 40
@@ -30,18 +30,18 @@ repeat 200 1
 	{
 		[ScriptBreak]
 	}
-	CurrentRam 0
+	CurrentRam 5
 	= BossInfo(0,0)
 	NewBulletColor 1
-	NewBulletShape 1
+	NewBulletShape 9
 	repeat 5 1
 	{
-		CurrentRam 1
+		CurrentRam 10
 		= cnt()
 		--- 3
 		** 5
 		CurrentNewBulletClass 2
-		@Boss[NewBulletSetPAim] 0 0 3 [ProgramRam(1)] 15 0
+		@Boss[NewBulletSetPAim] 0 0 3 [ProgramRam(10)] 15 0
 	}
 	repeat 3 1
 	{

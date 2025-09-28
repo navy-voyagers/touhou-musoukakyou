@@ -3,7 +3,7 @@
 	+++ 150
 repeat 3 1
 {
-	NewBulletShape 9
+	NewBulletShape 8
 	CurrentRam 3
 	= rnd(360)
 	CurrentNewBulletClass 0
@@ -25,14 +25,14 @@ repeat 3 1
 			= [ProgramRam(4)]
 			// 32
 			NewBulletColor 2
-			@Enemy[NewBulletSet] 0 0 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(2)],[ProgramRam(4)]) 18 0
+			@Enemy[NewBulletSet] 0 0 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(3)],[ProgramRam(2)]) 18 0
 			CurrentRam 4
 			+++ 8
 			CurrentRam 5
 			= [ProgramRam(4)]
 			// 32
 			NewBulletColor 4
-			@Enemy[NewBulletSet] 0 0 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(2)],[ProgramRam(4)]) 18 0
+			@Enemy[NewBulletSet] 0 0 NumberSum(1,[ProgramRam(5)]) NumberSum([ProgramRam(3)],[ProgramRam(1)]) 18 0
 			CurrentRam 4
 			+++ 8
 			CurrentRam 5
@@ -69,20 +69,20 @@ repeat 3 1
 		NewBulletColor 0
 		CurrentRam 6
 		= rnd(30)
-		NewBulletShape 3
+		NewBulletShape 7
 		repeat 3 1
 		{
-			CurrentRam 6
-			+++ 120
-			@Enemy[NewBulletSet] 0 0 3.4 [ProgramRam(6)] 16 2
+			CurrentRam 8
+			+++ 122
+			@Enemy[NewBulletSet] 0 0 3.4 [ProgramRam(8)] 16 2
 		}
 		NewBulletColor 2
 		+++ 60
 		repeat 3 1
 		{
-			CurrentRam 6
-			+++ 120
-			@Enemy[NewBulletSet] 0 0 3.4 [ProgramRam(6)] 16 2
+			CurrentRam 8
+			+++ 122
+			@Enemy[NewBulletSet] 0 0 3.4 [ProgramRam(8)] 16 2
 		}
 		EnemyClassChange 0 2 3 600
 		[ScriptBreak]
@@ -109,7 +109,7 @@ repeat 500 1
 	NewBulletColor 0
 	CurrentRam 6
 	= rnd(30)
-	NewBulletShape 3
+	NewBulletShape 6
 	repeat 3 1
 	{
 		CurrentRam 6

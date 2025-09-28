@@ -1,28 +1,40 @@
-BackScreenLoad stage/stage4/stage4.png 1
+BackScreenLoad res/pic/stage3.png 1
 BackScreenMoveSet 1 0 0
 CurrentBackScreenNumber 1
 
+..goto *BOSS-MID-Stage3
+..goto *Marisa-Stage3Boss
+
 CurrentRam 0
-vAudioLoad stage/stage3/stage3_midi.mp3
+vAudioLoad music/stage3/doutyu/stage3.mp3
 vAudioSetRepeat [ProgramRam(0)] 1
 vAudioPlay [ProgramRam(0)]
 
-CurrentRam 0
-= -40
 repeat 100 1
 {
-	+++ 10
-	if > 100
-	[
-		= 100
-	]
-	pos 100 [ProgramRam(0)]
-	color 255 64 64
-	printf Stage<space>3<space>gF‚Éõ‚Ü‚éŒ¶‘z‹½
 	[ScriptBreak]
 }
 
+#include stage/stage3/stage3logo.bdat
 #include stage/stage3/enemy1.bdat
 
+#include stage/stage3/enemy3.bdat
+#include stage/stage3/enemy2.bdat
 
-StageNumberChangeForce ‚¿‚é‚Ì
+#include stage/stage3/enemy5.bdat
+
+#include stage/stage3/enemy2.bdat
+#include stage/stage3/enemy4.bdat
+
+#include stage/stage3/enemy5.bdat
+
+*Marisa-stage3Boss
+vAudioStopAll
+vAudioReleaseAll
+CurrentRam 0
+vAudioLoad music/stage3/boss/stage3boss.mp3
+vAudioSetRepeat [ProgramRam(0)] 1
+vAudioPlay [ProgramRam(0)]
+#include stage/stage3/boss1.bdat
+
+End

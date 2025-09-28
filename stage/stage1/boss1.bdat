@@ -1,10 +1,10 @@
-BossPicSet stage/stage1/bossImg.png 2 210 0
+BossPicSet res/pic/mainboss1.png 2 210 0
 BossSet 210 -30 3000 3 60
 BossReplace 0 210 40
 
 repeat 1000 0
 {
-	NewBulletShape 2
+	NewBulletShape 6
 	repeat 30 1
 	{
 		CurrentNewBulletClass 0
@@ -31,7 +31,7 @@ repeat 1000 0
 		[ScriptBreak]
 	}
 	NewBulletColor 1
-	NewBulletShape 11
+	NewBulletShape 13
 	repeat 5 1
 	{
 		CurrentRam 2
@@ -71,7 +71,7 @@ repeat 1000 0
 一枚目
 repeat 1000 0
 {
-	NewBulletShape 2
+	NewBulletShape 6
 	repeat 10 1
 	{
 		NewBulletColor 8
@@ -131,7 +131,7 @@ repeat 1000 0
 
 repeat 1000 0
 {
-	NewBulletShape 2
+	NewBulletShape 6
 	repeat 30 1
 	{
 		CurrentNewBulletClass 0
@@ -158,7 +158,7 @@ repeat 1000 0
 		[ScriptBreak]
 	}
 	NewBulletColor 1
-	NewBulletShape 11
+	NewBulletShape 8
 	repeat 5 1
 	{
 		CurrentRam 2
@@ -199,7 +199,7 @@ repeat 1000 0
 
 repeat 1000 0
 {
-	NewBulletShape 2
+	NewBulletShape 9
 	repeat 10 1
 	{
 		repeat 5 1
@@ -262,7 +262,7 @@ repeat 1000 0
 
 repeat 1000 0
 {
-	NewBulletShape 11
+	NewBulletShape 6
 	repeat 10 1
 	{
 		NewBulletColor 8

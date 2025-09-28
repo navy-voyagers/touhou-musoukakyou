@@ -1,0 +1,184 @@
+CurrentRam 0
+= 0
+repeat 16 1
+{
+	EnemyTypeSet 1
+	EnemyCurrentClass 0
+	CurrentNewBulletClass 0
+	EnemySet -10 NumberSum(140,[ProgramRam(0)]) 4 0 100 30
+	CurrentRam 0
+	+++ 10
+	repeat 5 1
+	{
+		NewBulletColor 2
+		NewBulletShape 6
+		CurrentRam 2
+		= rnd(4)
+		--- 2
+		repeat 4 1
+		{
+			CurrentRam 10
+			+++ 98
+			@Enemy[NewBulletSetPAim] 0 0 3 [ProgramRam(10)] 15 1
+		}
+		repeat 5 1
+		{
+			EnemySpeedAddClass 0 -0.01
+			EnemyClassChange 0 0 1 50
+			EnemyClassChange 0 1 2 100
+			EnemySpeedAddClass 2 0.1
+			[ScriptBreak]
+		}
+	}
+}
+repeat 8 1
+{
+	repeat 5 1
+	{
+		NewBulletColor 2
+		NewBulletShape 6
+		CurrentRam 2
+		= rnd(4)
+		--- 2
+		repeat 4 1
+		{
+			CurrentRam 10
+			+++ 98
+			@Enemy[NewBulletSetPAim] 0 0 3 [ProgramRam(10)] 15 1
+		}
+		repeat 5 1
+		{
+			EnemySpeedAddClass 0 -0.01
+			EnemyClassChange 0 0 1 50
+			EnemyClassChange 0 1 2 100
+			EnemySpeedAddClass 2 0.1
+			[ScriptBreak]
+		}
+	}
+}
+
+CurrentRam 0
+= 0
+repeat 16 1
+{
+	EnemyTypeSet 0
+	EnemyCurrentClass 0
+	CurrentNewBulletClass 0
+	EnemySet 420 NumberSum(140,[ProgramRam(0)]) 4 180 100 30
+	CurrentRam 0
+	+++ 10
+	repeat 5 1
+	{
+		NewBulletColor 0
+		NewBulletShape 6
+		CurrentRam 2
+		= rnd(4)
+		--- 2
+		repeat 4 1
+		{
+			CurrentRam 10
+			+++ 98
+			@Enemy[NewBulletSetPAim] 0 0 3 [ProgramRam(10)] 15 1
+		}
+		loop
+		repeat 5 1
+		{
+			EnemySpeedAddClass 0 -0.01
+			EnemyClassChange 0 0 1 50
+			EnemyClassChange 0 1 2 100
+			EnemySpeedAddClass 2 0.1
+			[ScriptBreak]
+		}
+	}
+}
+repeat 8 1
+{
+	repeat 5 1
+	{
+		NewBulletColor 0
+		NewBulletShape 6
+		CurrentRam 2
+		= rnd(4)
+		--- 2
+		repeat 4 1
+		{
+			CurrentRam 12
+			+++ 100
+			@Enemy[NewBulletSetPAim] 0 0 3 [ProgramRam(12)] 15 1
+		}
+		loop
+		repeat 5 1
+		{
+			EnemySpeedAddClass 0 -0.01
+			EnemyClassChange 0 0 1 50
+			EnemyClassChange 0 1 2 100
+			EnemySpeedAddClass 2 0.1
+			[ScriptBreak]
+		}
+	}
+}
+
+
+両方
+CurrentRam 0
+= 0
+repeat 16 1
+{
+	EnemyTypeSet 1
+	EnemyCurrentClass 0
+	CurrentNewBulletClass 0
+	EnemySet -10 NumberSum(140,[ProgramRam(0)]) 4 0 100 30
+	EnemyTypeSet 0
+	EnemyCurrentClass 0
+	CurrentNewBulletClass 0
+	EnemySet 420 NumberSum(140,[ProgramRam(0)]) 4 180 100 30
+	CurrentRam 0
+	+++ 10
+	repeat 5 1
+	{
+		NewBulletColor 8
+		NewBulletShape 6
+		CurrentRam 2
+		= rnd(4)
+		--- 2
+		repeat 4 1
+		{
+			CurrentRam 10
+			+++ 98
+			@Enemy[NewBulletSetPAim] 0 0 3 [ProgramRam(10)] 15 1
+		}
+		repeat 5 1
+		{
+			EnemySpeedAddClass 0 -0.01
+			EnemyClassChange 0 0 1 50
+			EnemyClassChange 0 1 2 100
+			EnemySpeedAddClass 2 0.1
+			[ScriptBreak]
+		}
+	}
+}
+repeat 8 1
+{
+	repeat 5 1
+	{
+		NewBulletColor 8
+		NewBulletShape 6
+		CurrentRam 2
+		= rnd(4)
+		--- 2
+		repeat 4 1
+		{
+			CurrentRam 10
+			+++ 98
+			@Enemy[NewBulletSetPAim] 0 0 3 [ProgramRam(10)] 15 1
+		}
+		repeat 5 1
+		{
+			EnemySpeedAddClass 0 -0.01
+			EnemyClassChange 0 0 1 50
+			EnemyClassChange 0 1 2 100
+			EnemySpeedAddClass 2 0.1
+			[ScriptBreak]
+		}
+	}
+}

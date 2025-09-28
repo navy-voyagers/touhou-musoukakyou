@@ -1,0 +1,51 @@
+BossPicSet res/pic/miniboss3.png 2 210 0
+
+BossSet 210 -30 500 3 60
+BossReplace 0 210 40
+repeat 200 1
+{
+	CurrentRam 0
+	= BossInfo(0,0)
+	if = 0
+	[
+		break
+	]
+	NewBulletShape 0
+	repeat 30 1
+	{
+		CurrentNewBulletClass 0
+		NewBulletColor 0
+		@Boss[NewBulletSet] 0 0 3 rnd(360) 15 0
+		NewBulletDegChangeClass 1 0
+		CurrentNewBulletClass 1
+		NewBulletColor 2
+		@Boss[NewBulletSet] 0 0 3 rnd(360) 15 0
+		NewBulletDegChangeClass -1 1
+		repeat 3 1
+		{
+			[ScriptBreak]
+		}
+	}
+	repeat 10 1
+	{
+		[ScriptBreak]
+	}
+	CurrentRam 5
+	= BossInfo(0,0)
+	NewBulletColor 1
+	NewBulletShape 9
+	repeat 5 1
+	{
+		CurrentRam 10
+		= cnt()
+		--- 3
+		** 5
+		CurrentNewBulletClass 2
+		@Boss[NewBulletSetPAim] 0 0 3 [ProgramRam(10)] 15 0
+	}
+	repeat 3 1
+	{
+		[ScriptBreak]
+	}
+}
+BossReset

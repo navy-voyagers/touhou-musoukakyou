@@ -1,0 +1,370 @@
+BossPicSet res/pic/mainboss3.png 2 210 0
+BossSet 210 -30 3000 3 60
+BossReplace 0 210 40
+
+repeat 1000 0
+{
+	NewBulletShape 9
+	repeat 30 1
+	{
+		CurrentNewBulletClass 0
+		NewBulletColor 0
+		@Boss[NewBulletSet] 0 0 3 rnd(360) 20 0
+		NewBulletDegChangeClass 1 0
+		CurrentNewBulletClass 1
+		NewBulletColor 2
+		@Boss[NewBulletSet] 0 0 3 rnd(360) 20 0
+		NewBulletDegChangeClass -1 1
+		repeat 3 1
+		{
+			[ScriptBreak]
+		}
+	}
+	CurrentRam 0
+	= BossInfo(0,0)
+	if = 0
+	[
+		break
+	]
+	repeat 10 1
+	{
+		[ScriptBreak]
+	}
+	NewBulletColor 1
+	NewBulletShape 6
+	repeat 5 1
+	{
+		CurrentRam 2
+		--- cnt()
+		+++ 5
+		// 2
+		repeat 3 1
+		{
+			CurrentRam 5
+			= cnt()
+			--- 2
+			** 20
+			CurrentNewBulletClass 2
+			@Boss[NewBulletSetPAim] 0 0 [ProgramRam(2)] [ProgramRam(5)] 30 0
+		}
+		repeat 5 1
+		{
+			[ScriptBreak]
+		}
+	}
+	repeat 3 1
+	{
+		[ScriptBreak]
+	}
+	CurrentRam 0
+	= BossInfo(0,0)
+	if < 2500
+	[
+		break
+	]
+}
+
+	NewBulletReset
+	BossSpeedChange 1 0
+	CurrentRam 1
+	= rnd(360)
+一枚目
+repeat 1000 0
+{
+	NewBulletShape 6
+	repeat 10 1
+	{
+		NewBulletColor 8
+		repeat 5 1
+		{
+			CurrentRam 5
+			+++ 3
+			repeat 12 1
+			{
+				@Boss[NewBulletSet] 0 0 3 [ProgramRam(5)] 20 0
+				+++ 34
+				if > 360
+				[
+					--- 360
+				]
+			}
+			repeat 5 1
+			{
+				[ScriptBreak]
+			}
+		}
+		+++ 60
+		NewBulletColor 6
+		repeat 5 1
+		{
+			CurrentRam 6
+			+++ 3
+			repeat 12 1
+			{
+				@Boss[NewBulletSet] 0 0 3 NumberScale([ProgramRam(6)],-1) 20 0
+				+++ 30
+				if > 360
+				[
+					--- 360
+				]
+			}
+			repeat 5 1
+			{
+				[ScriptBreak]
+			}
+		}
+	}
+	CurrentRam 0
+	= BossInfo(0,0)
+	if < 2000
+	[
+		break
+	]
+	BossReplace 0 customrnd(200,100) 40
+	[ScriptBreak]
+}
+
+	NewBulletReset
+	BossSpeedChange 1 0
+	CurrentRam 1
+	BossReplace 0 210 40
+
+repeat 1000 0
+{
+	NewBulletShape 10
+	repeat 30 1
+	{
+		CurrentNewBulletClass 0
+		NewBulletColor 0
+		@Boss[NewBulletSet] 0 0 3 rnd(360) 20 0
+		NewBulletDegChangeClass 1 0
+		CurrentNewBulletClass 1
+		NewBulletColor 2
+		@Boss[NewBulletSet] 0 0 3 rnd(360) 20 0
+		NewBulletDegChangeClass -1 1
+		repeat 3 1
+		{
+			[ScriptBreak]
+		}
+	}
+	CurrentRam 0
+	= BossInfo(0,0)
+	if = 0
+	[
+		break
+	]
+	repeat 10 1
+	{
+		[ScriptBreak]
+	}
+	NewBulletColor 1
+	NewBulletShape 7
+	repeat 5 1
+	{
+		CurrentRam 2
+		--- cnt()
+		+++ 5
+		// 2
+		repeat 3 1
+		{
+			CurrentRam 1
+			= cnt()
+			--- 2
+			** 20
+			CurrentNewBulletClass 2
+			@Boss[NewBulletSetPAim] 0 0 [ProgramRam(2)] [ProgramRam(1)] 30 0
+		}
+		repeat 5 1
+		{
+			[ScriptBreak]
+		}
+	}
+	BossReplace 0 customrnd(200,100) 40
+	repeat 3 1
+	{
+		[ScriptBreak]
+	}
+	CurrentRam 0
+	= BossInfo(0,0)
+	if < 1500
+	[
+		break
+	]
+}
+
+	NewBulletReset
+	BossSpeedChange 1 0
+	CurrentRam 1
+	= 90
+
+repeat 1000 0
+{
+	NewBulletShape 11
+	repeat 10 1
+	{
+		repeat 5 1
+		{
+			CurrentRam 1
+			+++ 3
+			repeat 8 1
+			{
+				NewBulletColor 7
+				@Boss[NewBulletSet] 0 0 3 [ProgramRam(1)] 20 0
+				NewBulletColor 5
+				@Boss[NewBulletSet] 0 0 3 NumberScale([ProgramRam(1)],-1) 20 0
+				+++ 45
+				if > 360
+				[
+					--- 360
+				]
+			}
+			repeat 5 1
+			{
+				[ScriptBreak]
+			}
+		}
+		repeat 5 1
+		{
+			CurrentRam 1
+			+++ 3
+			repeat 8 1
+			{
+				NewBulletColor 0
+				@Boss[NewBulletSet] -50 0 2.4 rnd(360) 20 0
+				NewBulletColor 2
+				@Boss[NewBulletSet] 50 0 2.4 rnd(360) 20 0
+				+++ 45
+				if > 360
+				[
+					--- 360
+				]
+			}
+			repeat 5 1
+			{
+				[ScriptBreak]
+			}
+		}
+	}
+	CurrentRam 0
+	= BossInfo(0,0)
+	if < 750
+	[
+		break
+	]
+	BossReplace 0 customrnd(200,100) 40
+	[ScriptBreak]
+}
+
+	NewBulletReset
+	BossSpeedChange 1 0
+	CurrentRam 1
+	= 0
+
+repeat 1000 0
+{
+	NewBulletShape 4
+	repeat 10 1
+	{
+		NewBulletColor 8
+		repeat 5 1
+		{
+			CurrentRam 1
+			+++ 3
+			repeat 12 1
+			{
+				@Boss[NewBulletSet] 0 0 3 [ProgramRam(1)] 20 0
+				+++ 30
+				if > 360
+				[
+					--- 360
+				]
+			}
+			repeat 5 1
+			{
+				[ScriptBreak]
+			}
+		}
+		+++ 60
+		NewBulletColor 6
+		repeat 5 1
+		{
+			CurrentRam 1
+			+++ 3
+			repeat 12 1
+			{
+				@Boss[NewBulletSet] 0 0 3 NumberScale([ProgramRam(1)],-1) 20 0
+				+++ 30
+				if > 360
+				[
+					--- 360
+				]
+			}
+			repeat 5 1
+			{
+				[ScriptBreak]
+			}
+		}
+		repeat 5 1
+		{
+			CurrentRam 1
+			+++ 3
+			repeat 8 1
+			{
+				NewBulletColor 7
+				@Boss[NewBulletSet] 0 0 3 [ProgramRam(1)] 20 0
+				NewBulletColor 5
+				@Boss[NewBulletSet] 0 0 3 NumberScale([ProgramRam(1)],-1) 20 0
+				+++ 45
+				if > 360
+				[
+					--- 360
+				]
+			}
+			repeat 5 1
+			{
+				[ScriptBreak]
+			}
+		}
+		repeat 5 1
+		{
+			CurrentRam 1
+			+++ 3
+			repeat 8 1
+			{
+				NewBulletColor 0
+				@Boss[NewBulletSet] -50 0 2.4 rnd(360) 20 0
+				NewBulletColor 2
+				@Boss[NewBulletSet] 50 0 2.4 rnd(360) 20 0
+				+++ 45
+				if > 360
+				[
+					--- 360
+				]
+			}
+			repeat 5 1
+			{
+				[ScriptBreak]
+			}
+		}
+	}
+	CurrentRam 0
+	= BossInfo(0,0)
+	if < 1
+	[
+		break
+	]
+	BossReplace 0 customrnd(200,100) 40
+	[ScriptBreak]
+}
+
+	CurrentRam 0
+	= BossInfo(0,0)
+	if > 0
+	[
+		BossReset
+	]
+
+repeat 50 1
+{
+	[ScriptBreak]
+}

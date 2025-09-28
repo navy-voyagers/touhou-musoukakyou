@@ -11,7 +11,7 @@ repeat 8 1
 	repeat 5 1
 	{
 		NewBulletColor 2
-		NewBulletShape 1
+		NewBulletShape 5
 		CurrentRam 2
 		= rnd(4)
 		--- 2
@@ -36,7 +36,7 @@ repeat 8 1
 	repeat 5 1
 	{
 		NewBulletColor 2
-		NewBulletShape 1
+		NewBulletShape 5
 		CurrentRam 2
 		= rnd(4)
 		--- 2
@@ -70,7 +70,7 @@ repeat 8 1
 	repeat 5 1
 	{
 		NewBulletColor 0
-		NewBulletShape 1
+		NewBulletShape 4
 		CurrentRam 2
 		= rnd(4)
 		--- 2
@@ -96,7 +96,7 @@ repeat 8 1
 	repeat 5 1
 	{
 		NewBulletColor 0
-		NewBulletShape 1
+		NewBulletShape 4
 		CurrentRam 2
 		= rnd(4)
 		--- 2
@@ -137,7 +137,7 @@ repeat 8 1
 	repeat 5 1
 	{
 		NewBulletColor 8
-		NewBulletShape 6
+		NewBulletShape 9
 		CurrentRam 2
 		= rnd(4)
 		--- 2
@@ -162,7 +162,7 @@ repeat 8 1
 	repeat 5 1
 	{
 		NewBulletColor 8
-		NewBulletShape 6
+		NewBulletShape 9
 		CurrentRam 2
 		= rnd(4)
 		--- 2

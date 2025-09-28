@@ -1,4 +1,4 @@
-BackScreenLoad stage/stage2/stage2.png 1
+BackScreenLoad res/pic/stage2.png 1
 BackScreenMoveSet 1 0 0
 CurrentBackScreenNumber 1
 
@@ -25,9 +25,6 @@ repeat 100 1
 
 #include stage/stage2/enemy4.bdat
 #include stage/stage2/enemy4.bdat
-
-*BOSS-MID-stage2
-#include stage/stage2/midboss1.bdat
 
 #include stage/stage2/enemy5.bdat
 
